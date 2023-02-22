@@ -3,17 +3,17 @@ import React from 'react';
 const obj = [
   {
     type: 'savings',
-    color: '#f9c74f',
+    color: 'rgb(255, 99, 132)',
     percent: 45,
   },
   {
     type: 'Investment',
-    color: '#f9c74f',
+    color: 'rgb(54, 162, 235)',
     percent: 20,
   },
   {
     type: 'Expense',
-    color: 'rgb(54, 162, 235)',
+    color: 'rgb(255, 205, 86)',
     percent: 10,
   },
 ];
