@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import List from './List';
 
 function Form() {
   const { register, handleSubmit, resetField } = useForm();
@@ -47,6 +48,7 @@ function Form() {
           </div>
         </div>
       </form>
+      <List></List>
     </div>
   );
 }
