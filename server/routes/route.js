@@ -6,6 +6,10 @@ routes
   .post(controller.create_Categories)
   .get(controller.get_Categories);
 
-routes.route('/api/transaction').post(controller.create_Transaction);
+routes
+  .route('/api/transaction')
+  .post(controller.create_Transaction)
+  .get(controller.get_Transaction)
+  .delete(controller.delete_Transaction);
 
 module.exports = routes;
