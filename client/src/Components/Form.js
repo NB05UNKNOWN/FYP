@@ -23,7 +23,7 @@ function Form() {
             <input
               type="text"
               {...register('name')}
-              placeholder="Sallary, House rend, SIP"
+              placeholder="Salary, House rent, SIP"
               className="form-input"
             />
           </div>

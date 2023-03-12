@@ -1,6 +1,7 @@
 import './App.css';
 import Form from './Components/Form';
 import Graph from './Components/Graph';
+import Income from './Components/Income';
 
 function App() {
   return (
@@ -14,7 +15,11 @@ function App() {
           {/*Chart*/}
           <Graph />
           {/*Form */}
-          <Form></Form>
+          <Form />
+        </div>
+        <div className="grid md:grip-cols-2 gap-4">
+          {/*Income*/}
+          <Income />
         </div>
       </div>
     </div>

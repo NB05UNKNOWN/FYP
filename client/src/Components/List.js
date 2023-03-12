@@ -45,7 +45,9 @@ function Transaction({ category, handler }) {
           name="trash"
         />
       </button>
-      <span className="block w-full">{category.name ?? ''}</span>
+      <span className="block w-full">
+        {category.name ?? ''} -{'>'} {category.amount}
+      </span>
     </div>
   );
 }
