@@ -21,6 +21,14 @@ function Income() {
               className="form-input"
             />
           </div>
+          <select className="form-input" {...register('type')}>
+            <option value="Active Income" defaultValue>
+              Active Income
+            </option>
+            <option value="Pasive Income" defaultValue>
+              Pasive Income
+            </option>
+          </select>
           <div className="input-group">
             <input
               type="text"

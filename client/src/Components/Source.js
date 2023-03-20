@@ -4,7 +4,11 @@ import 'boxicons';
 const obj = [
   {
     name: 'Salary',
-    Color: '#00FF00',
+    Color: '#90EE90',
+  },
+  {
+    name: 'Rent 100',
+    Color: '#023020',
   },
 ];
 

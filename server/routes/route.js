@@ -1,5 +1,6 @@
 const routes = require('express').Router();
 const controller = require('../controller/controller');
+const { Categories } = require('../models/model');
 
 routes
   .route('/api/categories')
@@ -13,5 +14,18 @@ routes
   .delete(controller.delete_Transaction);
 
 routes.route('/api/labels').get(controller.get_Labels);
+
+routes
+  .route('/api/income')
+  .post(controller.create_Income)
+  .get(controller.get_Income);
+
+routes
+  .route('/api/source')
+  .post(controller.create_Source)
+  .get(controller.get_Source)
+  .delete(controller.delete_Source);
+
+routes.route('/api/labelsIncome').get(controller.get_labelsIncome);
 
 module.exports = routes;
