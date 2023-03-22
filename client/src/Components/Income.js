@@ -1,13 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Source from './Source';
+import { default as api } from '../store/apiSlice';
 
 function Income() {
   const { register, handleSubmit, resetField } = useForm();
+  const [addSource] = api.useAddSourceMutation();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    if (!data) return {};
+    await addSource(data).unwrap();
+    resetField('name');
+    resetField('amount');
   };
+
   return (
     <div className="form max-w-sm mx-auto w-96">
       <h1 className="font-bold pb-4 text-xl">Income </h1>

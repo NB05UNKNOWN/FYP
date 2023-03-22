@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialStateIncome = {
+const initialState = {
   income: [],
   sources: [],
 };
 
 export const incomeSlice = createSlice({
   name: 'income',
-  initialStateIncome,
+  initialState,
   reducer: {
     getSources: (state) => {},
   },

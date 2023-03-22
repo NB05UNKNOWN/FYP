@@ -40,6 +40,41 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['transaction'],
     }),
+
+    // get income
+    getIncome: builder.query({
+      //get: http://localhost:8080/api/income
+      query: () => '/api/income',
+      providesTags: ['income'],
+    }),
+
+    //get Lable of income
+    getIncomeLabels: builder.query({
+      //get: 'http://localhost:8080/api/labelsIncome'
+      query: () => 'api/labelsIncome',
+      providesTags: ['source'],
+    }),
+
+    addSource: builder.mutation({
+      query: (initialSource) => ({
+        //post: 'http://localhost:8080/api/source'
+        url: '/api/source',
+        method: 'POST',
+        body: initialSource,
+      }),
+      invalidatesTags: ['source'],
+    }),
+
+    //delete record
+    deleteSource: builder.mutation({
+      query: (recordid) => ({
+        //delete: 'http://localhost:8080/api/source'
+        url: '/api/source',
+        method: 'DELETE',
+        body: recordid,
+      }),
+      invalidatesTags: ['source'],
+    }),
   }),
 });
 

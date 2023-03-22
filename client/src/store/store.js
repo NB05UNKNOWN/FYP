@@ -1,12 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-import expenseSlice from './reducer';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import expenseSlice from './exportReducer';
+import inputSlice from './inputReducer';
 import { apiSlice } from './apiSlice';
 
+const rootReducer = combineReducers({
+  expense: expenseSlice,
+  input: inputSlice,
+  [apiSlice.reducerPath]: apiSlice.reducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    expense: expenseSlice,
-    [apiSlice.reducerPath]: apiSlice.reducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
 });
