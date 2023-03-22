@@ -14,4 +14,5 @@ export const expenseSlice = createSlice({
 });
 
 export const { getTransactions } = expenseSlice.actions;
+
 export default expenseSlice.reducer;
