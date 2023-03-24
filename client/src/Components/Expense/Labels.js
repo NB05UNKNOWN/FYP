@@ -1,6 +1,6 @@
 import React from 'react';
-import { default as api } from '../store/apiSlice';
-import { getLabels } from '../helper/helper';
+import { default as api } from '../../store/apiSlice';
+import { getLabels } from '../../helper/helper';
 
 function Labels() {
   const { data, isFetching, isSuccess, isError } = api.useGetLabelsQuery();

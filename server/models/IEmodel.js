@@ -25,7 +25,7 @@ const income_model = new Schema({
 //Source
 const Source_model = new Schema({
   name: { type: String, default: 'Anonymous' },
-  type: { type: String, default: 'Income' },
+  type: { type: String, default: 'Active Income' },
   amount: { type: Number },
   date: { type: Date, default: Date.now },
 });

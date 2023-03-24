@@ -1,58 +1,61 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Source from './Source';
-import { default as api } from '../store/apiSlice';
+import List from './List';
+import { default as api } from '../../store/apiSlice';
 
-function Income() {
+function Form() {
   const { register, handleSubmit, resetField } = useForm();
-  const [addSource] = api.useAddSourceMutation();
+  const [addTransaction] = api.useAddTransactionMutation();
 
   const onSubmit = async (data) => {
     if (!data) return {};
-    await addSource(data).unwrap();
+    await addTransaction(data).unwrap();
     resetField('name');
     resetField('amount');
   };
 
   return (
     <div className="form max-w-sm mx-auto w-96">
-      <h1 className="font-bold pb-4 text-xl">Income </h1>
+      <h1 className="font-bold pb-4 text-xl">Transaction </h1>
       <form id="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4">
           <div className="input-group">
             <input
               type="text"
               {...register('name')}
-              placeholder="income source"
+              placeholder="Salary, House rent, SIP"
               className="form-input"
             />
           </div>
           <select className="form-input" {...register('type')}>
-            <option value="Active Income" defaultValue>
-              Active Income
+            <option value="Investment" defaultValue>
+              Investment
             </option>
-            <option value="Pasive Income" defaultValue>
-              Pasive Income
+            <option value="Expense" defaultValue>
+              Expense
+            </option>
+            <option value="Savings" defaultValue>
+              Savings
             </option>
           </select>
           <div className="input-group">
             <input
               type="text"
               {...register('amount')}
-              placeholder="amount"
+              placeholder="Amount"
               className="form-input"
             />
           </div>
           <div className="submit-btn">
             <button className="border py-2 text-white bg-indigo-500 w-full">
-              Add source
+              Make Transaction
             </button>
           </div>
         </div>
       </form>
-      <Source />
+      <List></List>
     </div>
   );
 }
 
-export default Income;
+export default Form;

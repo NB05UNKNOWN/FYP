@@ -1,6 +1,6 @@
 import React from 'react';
 import 'boxicons';
-import { default as api } from '../store/apiSlice';
+import { default as api } from '../../store/apiSlice';
 
 function Source() {
   const { data, isFetching, isSuccess, isError } =

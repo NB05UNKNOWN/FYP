@@ -55,3 +55,22 @@ export function chart_Data(transaction, custom) {
 export function getTotal(transaction) {
   return _.sum(getSum(transaction));
 }
+
+export function getIncomeSum(source, type) {
+  let IncomeSum = _(source)
+    .groupBy('type')
+    .map((objs, key) => {
+      if (!type) return _.sumBy(objs, 'amount');
+      return {
+        type: key,
+        color: objs[0].color,
+        total: _.sumBy(objs, 'amount'),
+      };
+    })
+    .value();
+  return IncomeSum;
+}
+
+export function getTotalSource(source) {
+  return _.sum(getIncomeSum(source));
+}

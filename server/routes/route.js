@@ -1,6 +1,6 @@
 const routes = require('express').Router();
-const controller = require('../controller/controller');
-const { Categories } = require('../models/model');
+const controller = require('../controller/IEcontroller');
+const { Categories } = require('../models/IEmodel');
 
 routes
   .route('/api/categories')

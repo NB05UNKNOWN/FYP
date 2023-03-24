@@ -1,4 +1,4 @@
-const model = require('../models/model');
+const model = require('../models/IEmodel');
 
 //get categories
 //post: http://localhost:8080/api/categories

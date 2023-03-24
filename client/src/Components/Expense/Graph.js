@@ -2,8 +2,8 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 import Labels from './Labels';
-import { chart_Data, getTotal } from '../helper/helper';
-import { default as api } from '../store/apiSlice';
+import { chart_Data, getTotal } from '../../helper/helper';
+import { default as api } from '../../store/apiSlice';
 
 Chart.register(ArcElement);
 
