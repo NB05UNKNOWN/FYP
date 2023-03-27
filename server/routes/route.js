@@ -1,31 +1,38 @@
 const routes = require('express').Router();
-const controller = require('../controller/IEcontroller');
+const IEcontroller = require('../controller/IEcontroller');
 const { Categories } = require('../models/IEmodel');
+const usercontroller = require('../controller/usercontroller');
 
 routes
   .route('/api/categories')
-  .post(controller.create_Categories)
-  .get(controller.get_Categories);
+  .post(IEcontroller.create_Categories)
+  .get(IEcontroller.get_Categories);
 
 routes
   .route('/api/transaction')
-  .post(controller.create_Transaction)
-  .get(controller.get_Transaction)
-  .delete(controller.delete_Transaction);
+  .post(IEcontroller.create_Transaction)
+  .get(IEcontroller.get_Transaction)
+  .delete(IEcontroller.delete_Transaction);
 
-routes.route('/api/labels').get(controller.get_Labels);
+routes.route('/api/labels').get(IEcontroller.get_Labels);
 
 routes
   .route('/api/income')
-  .post(controller.create_Income)
-  .get(controller.get_Income);
+  .post(IEcontroller.create_Income)
+  .get(IEcontroller.get_Income);
 
 routes
   .route('/api/source')
-  .post(controller.create_Source)
-  .get(controller.get_Source)
-  .delete(controller.delete_Source);
+  .post(IEcontroller.create_Source)
+  .get(IEcontroller.get_Source)
+  .delete(IEcontroller.delete_Source);
 
-routes.route('/api/labelsIncome').get(controller.get_labelsIncome);
+routes.route('/api/labelsIncome').get(IEcontroller.get_labelsIncome);
+
+routes.route('/api/user').get(usercontroller.getAllUser);
+
+routes.route('/api/user/signup').post(usercontroller.signup);
+
+routes.route('/api/user/login').post(usercontroller.login);
 
 module.exports = routes;
