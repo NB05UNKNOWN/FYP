@@ -1,7 +1,13 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../store/authReducer';
+import { useNavigate } from 'react-router-dom';
 
 function Auth() {
+  const naviagte = useNavigate();
+  const dispath = useDispatch();
   const [input, setInput] = useState({
     name: '',
     email: '',
@@ -15,10 +21,32 @@ function Auth() {
       [e.target.name]: e.target.value,
     }));
   };
+  const sendRequest = async (type = 'login') => {
+    const res = await axios
+      .post(`http://localhost:8080/api/user/${type}`, {
+        name: input.name,
+        email: input.email,
+        password: input.password,
+      })
+      .catch((err) => console.log(err));
+
+    const data = await res.data;
+    return data;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
+    if (isSignup) {
+      sendRequest('signup')
+        .then(() => dispath(authActions.login()))
+        .then(() => naviagte('/dashboard'))
+        .then((data) => console.log(data));
+    } else {
+      sendRequest()
+        .then(() => dispath(authActions.login()))
+        .then(() => naviagte('/dashboard'))
+        .then((data) => console.log(data));
+    }
   };
   return (
     <div>

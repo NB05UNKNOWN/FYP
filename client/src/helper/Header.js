@@ -9,10 +9,12 @@ import {
   Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { store } from '../store/store';
+import { authActions } from '../store/authReducer';
 
 const Header = () => {
+  const dispath = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const [value, setValue] = useState();
@@ -34,8 +36,9 @@ const Header = () => {
               value={value}
               onChange={(e, val) => setValue(val)}
             >
-              <Tab LinkComponent={Link} to="/homePage" label="Home Page" />
-              <Tab label="Expense" />
+              <Tab LinkComponent={Link} to="/dashboard" label="Dash Board" />
+              <Tab LinkComponent={Link} to="/expenses" label="Expenses" />
+              <Tab LinkComponent={Link} to="/income" label="Incomes" />
             </Tabs>
           </Box>
         )}
@@ -64,6 +67,7 @@ const Header = () => {
           )}
           {isLoggedIn && (
             <Button
+              onClick={() => dispath(authActions.logout())}
               LinkComponent={Link}
               to="/auth"
               variant="contained"
