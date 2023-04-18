@@ -4,8 +4,8 @@ import DashBoardGraph from '../Components/DashBoardGraph';
 function DashBoard() {
   return (
     <div>
-      DashBoard
       <DashBoardGraph />
+      <p> All your Income and Expence are shown in graph here.</p>
     </div>
   );
 }

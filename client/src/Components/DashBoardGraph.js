@@ -29,8 +29,7 @@ function DashBoardGraph() {
   };
 
   return (
-    <div>
-      DashBoardGraph
+    <div className="flex justify-center" style={{ width: '100%' }}>
       <div className="flex justify-center w-1/2">
         <Bar {...config} width={100} height={50} />
       </div>

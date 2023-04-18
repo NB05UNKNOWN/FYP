@@ -6,14 +6,16 @@ import { authActions } from '../store/authReducer';
 import { useNavigate } from 'react-router-dom';
 
 function Auth() {
-  const naviagte = useNavigate();
-  const dispath = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     name: '',
     email: '',
     password: '',
   });
   const [isSignup, setIsSignup] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setInput((prevState) => ({
@@ -21,33 +23,39 @@ function Auth() {
       [e.target.name]: e.target.value,
     }));
   };
+
   const sendRequest = async (type = 'login') => {
-    const res = await axios
-      .post(`http://localhost:8080/api/user/${type}`, {
+    try {
+      const res = await axios.post(`http://localhost:8080/api/user/${type}`, {
         name: input.name,
         email: input.email,
         password: input.password,
-      })
-      .catch((err) => console.log(err));
+      });
 
-    const data = await res.data;
-    return data;
+      const data = res.data;
+      return data;
+    } catch (err) {
+      console.log(err);
+      setError('Invalid Email or password');
+      throw err;
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
       sendRequest('signup')
-        .then(() => dispath(authActions.login()))
-        .then(() => naviagte('/dashboard'))
+        .then(() => dispatch(authActions.login()))
+        .then(() => navigate('/dashboard'))
         .then((data) => console.log(data));
     } else {
       sendRequest()
-        .then(() => dispath(authActions.login()))
-        .then(() => naviagte('/dashboard'))
+        .then(() => dispatch(authActions.login()))
+        .then(() => navigate('/dashboard'))
         .then((data) => console.log(data));
     }
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -91,6 +99,7 @@ function Auth() {
             placeholder="password"
             margin="normal"
           />
+          {error && <div>Error: {error}</div>}
           <Button
             type="submit"
             variant="contained"
